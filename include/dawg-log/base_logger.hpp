@@ -61,6 +61,7 @@ namespace DawgLog {
     template<typename... Args>
     std::string log(LogLevel lvl, std::string_view tag, const SourceLocation &src,
              fmt::string_view fmt_str, Args &&... args) {
+        std::lock_guard<std::mutex> lock(m_);
         std::string msg;
     #if FMT_VERSION >= 80000
                  msg = fmt::format(fmt::runtime(fmt_str), std::forward<Args>(args)...);
