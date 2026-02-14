@@ -1,4 +1,6 @@
 #include "dawg-log/base_logger.hpp"
+#include "dawg-log/concepts.hpp"
+#include "dawg-log/general_logs.hpp"
 #include "dawg-log/sinks/console_sink.hpp"
 #include "dawg-log/sinks/syslog_sink.hpp"
 #include "dawg-log/formatters/text_formatter.hpp"
@@ -50,6 +52,13 @@ void Logger::init(const Config& cfg, SinkPtr sink, FormatterPtr formatter) {
 }
 
 Logger& Logger::instance() {
+    if (!logger) {
+        logger = std::make_unique<Logger>(
+            make_sink(SinkType::CONSOLE, "DawgLog"),
+            make_formatter(FormatterType::TEXT),
+            "DawgLog");
+        WARNING("Logger not initialized. Defaulting to console sink and text format.");
+    }
     return *logger;
 }
 
