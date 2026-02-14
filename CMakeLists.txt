@@ -45,6 +45,16 @@ endif()
 add_executable(logger_demo examples/demo_main.cpp)
 target_link_libraries(logger_demo PRIVATE dawg-logger)
 
+option(DAWGLOG_BUILD_TESTS "Build dawg-logger tests" ON)
+include(CTest)
+if(DAWGLOG_BUILD_TESTS)
+  add_executable(dawglog_basic_tests tests/basic_tests.cpp)
+  target_link_libraries(dawglog_basic_tests PRIVATE dawg-logger)
+  add_test(NAME dawglog_basic_tests COMMAND dawglog_basic_tests)
+  set_tests_properties(dawglog_basic_tests PROPERTIES
+    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
+endif()
+
 ######################################################################################
 ###                               library installation                             ###
 ######################################################################################

@@ -35,6 +35,21 @@ cmake -B build -S . -DCMAKE_BUILD_TYPE=Release
 sudo cmake --build build --target install -- -j$(nproc)
 ```
 
+### ✅ Tests
+
+Tests are built by default. You can disable them with:
+
+```bash
+cmake -B build -S . -DDAWGLOG_BUILD_TESTS=OFF
+```
+
+To run tests:
+
+```bash
+cmake --build build -j
+ctest --test-dir build
+```
+
 ---
 
 ## 🔗 Using DawgLogger in your project

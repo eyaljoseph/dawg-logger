@@ -6,6 +6,7 @@
 
 #include <exception>
 #include <concepts>
+#include <type_traits>
 
 namespace DawgLog {
 

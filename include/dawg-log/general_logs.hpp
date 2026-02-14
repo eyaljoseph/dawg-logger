@@ -1,5 +1,10 @@
 #pragma once
 
+#include <stdexcept>
+#include <fmt/core.h>
+#include "base_logger.hpp"
+#include "concepts.hpp"
+
 namespace DawgLog {
    /**
     * @brief Log a message with general tag for all type of logs

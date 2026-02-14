@@ -6,7 +6,7 @@
 using namespace DawgLog;
 
 int main() {
-    Logger::init(Config{"console", "text", "testrun"});
+    Logger::init(Config{"config.json"});
     TaggedLogger t("mod");
     t.info(LOG_SRC, "value {}", 123);
     assert(true);

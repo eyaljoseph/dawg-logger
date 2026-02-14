@@ -1,4 +1,5 @@
 #include "dawg-log/utils.hpp"
+#include <array>
 #include <chrono>
 #include <ctime>
 
